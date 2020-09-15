@@ -12,13 +12,19 @@ public class TicTacToe {
         board = new char[3][3];
         isXTurn = 'X';
         startGame();
-
+        //gameReset();
     }
 
     public void gameReset(){
         startGame();
+        printBoard();
+        placeMark();
+        noMoreSpots();
+        hasWinner();
 
     }
+
+
 
     public char placeMark() {
         return isXTurn;
@@ -71,7 +77,7 @@ public class TicTacToe {
 
     private boolean checkRows() {
         for (int i = 0; i < 3; i++) {
-            if (rowColumn(board[i][0], board[i][1], board[i][2]) == true) {
+            if (rowColumn(board[i][0], board[i][1], board[i][2])) {
                 return true;
             }
         }
@@ -81,7 +87,7 @@ public class TicTacToe {
 
     private boolean checkColumns() {
         for (int i = 0; i < 3; i++) {
-            if (rowColumn(board[0][i], board[1][i], board[2][i]) == true) {
+            if (rowColumn(board[0][i], board[1][i], board[2][i])) {
                 return true;
             }
         }
@@ -91,7 +97,7 @@ public class TicTacToe {
 
 
     private boolean checkDiagonals() {
-        return ((rowColumn(board[0][0], board[1][1], board[2][2]) == true) || (rowColumn(board[0][2], board[1][1], board[2][0]) == true));
+        return ((rowColumn(board[0][0], board[1][1], board[2][2])) || (rowColumn(board[0][2], board[1][1], board[2][0])));
 
 
     }
@@ -165,10 +171,8 @@ public class TicTacToe {
         System.out.println("Want to play again?? Press 1, otherwise Press 0: ");
         int option = scanner.nextInt();
         if(option == 1){
-            game.gameReset();
+           game.gameReset();
         }
-
-
 
 
     }
