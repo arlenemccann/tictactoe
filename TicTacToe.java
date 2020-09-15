@@ -12,18 +12,18 @@ public class TicTacToe {
         board = new char[3][3];
         isXTurn = 'X';
         startGame();
-        //gameReset();
+        gameReset();
     }
 
     public void gameReset(){
+        placeMark();
         startGame();
         printBoard();
-        placeMark();
         noMoreSpots();
         hasWinner();
+        
 
     }
-
 
 
     public char placeMark() {
@@ -67,7 +67,6 @@ public class TicTacToe {
         }
         return boardFull;
     }
-
 
     public boolean hasWinner() {
 
@@ -135,18 +134,22 @@ public class TicTacToe {
 
         Scanner scanner = new Scanner(System.in);
 
-
         TicTacToe game = new TicTacToe();
 
         game.startGame();
         System.out.println("Let's Play Tic Tac Toe!!");
+        boolean continueGame=true;
+        while(continueGame){
+            game.gameReset();
+        }
+
         do {
             System.out.println("\nTic Tac Toe Board: ");
             game.printBoard();
             int row;
             int col;
             do {
-                System.out.println("Player " + game.placeMark() + ", please enter an empty row (hit enter) and column (hit enter again) to play!");
+                System.out.println("Player " + game.placeMark() + ", please (hit enter) and column (hit enter again) to play!");
                 row = scanner.nextInt() - 1;
                 col = scanner.nextInt() - 1;
             }
@@ -170,10 +173,17 @@ public class TicTacToe {
 
         System.out.println("Want to play again?? Press 1, otherwise Press 0: ");
         int option = scanner.nextInt();
+        continueGame = (option == 1);
+
+        /*System.out.println("Want to play again?? Press 1, otherwise Press 0: ");
+        int option = scanner.nextInt();
         if(option == 1){
+           while (game.hasWinner() || game.noMoreSpots());
            game.gameReset();
+           }
+
+         */
         }
 
 
-    }
 }
