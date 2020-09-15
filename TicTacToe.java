@@ -146,7 +146,7 @@ public class TicTacToe {
             int row;
             int col;
             do {
-                System.out.println("Player " + game.placeMark() + ", please enter an empty row and column to play!");
+                System.out.println("Player " + game.placeMark() + ", please enter an empty row (hit enter) and column (hit enter again) to play!");
                 row = scanner.nextInt() - 1;
                 col = scanner.nextInt() - 1;
             }
